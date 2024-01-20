@@ -5,7 +5,7 @@
 using namespace std;
 
 // runs a swerve chassis
-class SwerveDrive
+class Swerve
 {
 
 private:
@@ -91,4 +91,4 @@ public:
         return (abs(positionError) < positionTolerance) && (abs(angleError) < angleTolerance);
     }
 
-} swerve;
+};

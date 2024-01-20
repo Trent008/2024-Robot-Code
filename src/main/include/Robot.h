@@ -7,7 +7,7 @@
 #include <frc/TimedRobot.h>
 #include "frc/Joystick.h"
 #include "fmt/core.h"
-#include "SwerveDrive.h"
+#include "Swerve.h"
 
 class Robot : public frc::TimedRobot {
  public:
@@ -31,4 +31,5 @@ class Robot : public frc::TimedRobot {
 
   frc::Joystick xBoxC{0};
   int i = 0;
+  Swerve swerve;
 };

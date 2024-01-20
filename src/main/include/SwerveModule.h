@@ -2,30 +2,29 @@
 #include "rev/CANSparkMax.h"
 #include "ctre/phoenix6/CANcoder.hpp"
 #include "ctre/phoenix6/TalonFX.hpp"
-#include "angleOptimization.h"
+#include "angleMath.h"
 #include "Parameters.h"
 #include "complex"
 
 using namespace std;
-using namespace ctre::phoenix6;
 
 // controls the motion of each swerve module
 class SwerveModule
 {
 private:
     complex<float> steeringVector; // module drive vector for steering the robot counter clockwise
-    hardware::TalonFX *driveMotor; // spins the wheel
+    ctre::phoenix6::hardware::TalonFX *driveMotor; // spins the wheel
     rev::CANSparkMax *turningMotor; // changes wheel angle
-    hardware::CANcoder *wheelAngleEncoder; // measures wheel angle
+    ctre::phoenix6::hardware::CANcoder *wheelAngleEncoder; // measures wheel angle
     float lastPosition = 0; // last position of the drive motor
     complex<float> positionChangeVector; // vector defining module's position change since last Set() call
 
 public:
     SwerveModule(int driveMotorCANID, int turningMotorCANID, int canCoderID, complex<float> position)
     {
-        driveMotor = new hardware::TalonFX(driveMotorCANID, "rio");
+        driveMotor = new ctre::phoenix6::hardware::TalonFX(driveMotorCANID, "rio");
         turningMotor = new rev::CANSparkMax{turningMotorCANID, rev::CANSparkMax::MotorType::kBrushless};
-        wheelAngleEncoder = new hardware::CANcoder{canCoderID};
+        wheelAngleEncoder = new ctre::phoenix6::hardware::CANcoder{canCoderID};
         // calculate the steering vector
         steeringVector = position;
          // rotate 90 degrees CCW
