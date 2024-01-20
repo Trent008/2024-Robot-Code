@@ -6,9 +6,10 @@ class NoteHandler
 {
   public:
 
+    // set the note handler angle (range: 0 to 330 degrees)
     bool SetAngle(float angle)
     {
-        // limit the angle
+        // limit the angle setpoint
         if (angle > 330)
         {
             angle = 330;
@@ -18,8 +19,11 @@ class NoteHandler
             angle = 0;
         }
         
+        // calculate the reference
         float reference = angle / parameters.noteHandlerDegPerRot;
+        // set the reference
         pivotPID.SetReference(reference, rev::CANSparkMax::ControlType::kPosition);
+        // return true if setpoint reached
         if (abs(reference - pivotEncoder.GetPosition()))
         {
             return true;
@@ -27,8 +31,10 @@ class NoteHandler
         return false;
     }
 
+    // set the elevator height (range: 0 to 20 inches)
     bool SetHeight(float height)
     {
+        // limit the height setpoint
         if (height > 20)
         {
             height = 20;
@@ -37,8 +43,11 @@ class NoteHandler
         {
             height = 0;
         }
+        // calculate the reference
         float reference = height / parameters.noteHandlerElevInPerRot;
+        // set the reference
         elevatorPID.SetReference(reference, rev::CANSparkMax::ControlType::kPosition);
+        // return true if setpoint reached
         if (abs(reference - elevatorEncoder.GetPosition()))
         {
             return true;
