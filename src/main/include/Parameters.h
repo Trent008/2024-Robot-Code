@@ -35,10 +35,4 @@ struct Parameters
 
     // proportional constant for autonomous angle error
     float const autoAngleP = 0.005;
-
-    // robot starting position on the field
-    complex<float> startingPosition = {0, 0};
-    // robot starting angle on the field (degrees)
-    float startingAngle = 0;
-    
 } parameters;

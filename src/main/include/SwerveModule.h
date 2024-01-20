@@ -1,19 +1,20 @@
 #pragma once
 #include "rev/CANSparkMax.h"
 #include "ctre/phoenix6/CANcoder.hpp"
-#include "Kraken.h"
+#include "ctre/phoenix6/TalonFX.hpp"
 #include "angleOptimization.h"
 #include "Parameters.h"
 #include "complex"
 
 using namespace std;
+using namespace ctre::phoenix6;
 
 // controls the motion of each swerve module
 class SwerveModule
 {
 private:
     complex<float> steeringVector; // module drive vector for steering the robot counter clockwise
-    Kraken *driveMotor; // spins the wheel
+    hardware::TalonFX *driveMotor; // spins the wheel
     rev::CANSparkMax *turningMotor; // changes wheel angle
     hardware::CANcoder *wheelAngleEncoder; // measures wheel angle
     float lastPosition = 0; // last position of the drive motor
@@ -22,7 +23,7 @@ private:
 public:
     SwerveModule(int driveMotorCANID, int turningMotorCANID, int canCoderID, complex<float> position)
     {
-        driveMotor = new Kraken{driveMotorCANID};
+        driveMotor = new hardware::TalonFX(driveMotorCANID, "rio");
         turningMotor = new rev::CANSparkMax{turningMotorCANID, rev::CANSparkMax::MotorType::kBrushless};
         wheelAngleEncoder = new hardware::CANcoder{canCoderID};
         // calculate the steering vector
@@ -35,7 +36,6 @@ public:
     // initialize the drive motor and invert the turning motor
     void initialize()
     {
-        driveMotor->initialize();
         turningMotor->SetInverted(false);
         turningMotor->BurnFlash();
     }
@@ -73,18 +73,18 @@ public:
                 driveMotorVelocity = -driveMotorVelocity;
                 error = angleSum(error, 180);
             }
-            driveMotor->SetVelocity(driveMotorVelocity);
+            driveMotor->Set(driveMotorVelocity);
             // set the turning motor to a speed proportional to its error
             turningMotor->Set(error / 180);
         }
         else // if the target velocity is basically zero, do nothing
         {
-            driveMotor->SetVelocity(0);
+            driveMotor->Set(0);
             turningMotor->Set(0);
         }
         
         // find the delta position change since last Set() call
-        float currentPosition = driveMotor->getPosition();
+        float currentPosition = driveMotor->GetPosition().GetValue().value();
         positionChangeVector = polar<float>((currentPosition - lastPosition) * parameters.driveMotorInPerRot, currentWheelAngle*M_PI/180);
         lastPosition = currentPosition;
     }
