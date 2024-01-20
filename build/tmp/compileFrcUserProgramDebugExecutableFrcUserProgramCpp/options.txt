@@ -15,7 +15,7 @@ c++
 -g
 -nostdinc
 -I
-C:\\Users\\trent\\Desktop\\Code\\Robot\\Swerve-Cpp-2024\\src\\main\\include
+C:\\Users\\trent\\Desktop\\Code\\Robot\\2024-Robot-Code\\src\\main\\include
 -I
 C:\\Users\\trent\\.gradle\\caches\\transforms-3\\e75dd77605070101afba59d386d4f458\\transformed\\wpilibNewCommands-cpp-2024.1.1-headers
 -I

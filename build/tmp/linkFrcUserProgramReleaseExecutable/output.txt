@@ -1,4 +1,4 @@
-See file:///C:/Users/trent/Desktop/Code/Robot/Swerve-Cpp-2024/build/tmp/linkFrcUserProgramReleaseExecutable/output.txt for all output for linkFrcUserProgramReleaseExecutable.
+See file:///C:/Users/trent/Desktop/Code/Robot/2024-Robot-Code/build/tmp/linkFrcUserProgramReleaseExecutable/output.txt for all output for linkFrcUserProgramReleaseExecutable.
 linking frcUserProgram successful.
 
-Finished linkFrcUserProgramReleaseExecutable, see full log file:///C:/Users/trent/Desktop/Code/Robot/Swerve-Cpp-2024/build/tmp/linkFrcUserProgramReleaseExecutable/output.txt.
+Finished linkFrcUserProgramReleaseExecutable, see full log file:///C:/Users/trent/Desktop/Code/Robot/2024-Robot-Code/build/tmp/linkFrcUserProgramReleaseExecutable/output.txt.
