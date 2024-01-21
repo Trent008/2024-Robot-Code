@@ -1,12 +1,10 @@
 #include "Robot.h"
-
 void Robot::RobotInit(){}
 void Robot::RobotPeriodic() {}
 void Robot::AutonomousInit() {}
-void Robot::AutonomousPeriodic(){}
+void Robot::AutonomousPeriodic() {}
 void Robot::TeleopInit() {}
-void Robot::TeleopPeriodic()
-{
+void Robot::TeleopPeriodic() {
   complex<float> driveRate = complex<float>(xBoxC.GetLeftX(), -xBoxC.GetLeftY())*0.5f;
   float turnRate = -xBoxC.GetRightX()*0.5;
   for (int i = 0; i < 4; i++) {
