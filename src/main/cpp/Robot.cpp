@@ -3,7 +3,6 @@
 // the WPILib BSD license file in the root directory of this project.
 
 #include "Robot.h"
-#include "complex"
 
 void Robot::RobotInit(){}
 void Robot::RobotPeriodic() {}
@@ -16,8 +15,7 @@ void Robot::TeleopPeriodic()
 {
   complex<float> driveRate = complex<float>(xBoxC.GetLeftX(), -xBoxC.GetLeftY())*0.5f;
   float turnRate = -xBoxC.GetRightX()*0.5;
-  for (int i = 0; i < 4; i++)
-  {
+  for (int i = 0; i < 4; i++) {
       modules[i].Set(driveRate*polar<float>(1, navx.GetYaw()*M_PI/180), turnRate);
   }
 }

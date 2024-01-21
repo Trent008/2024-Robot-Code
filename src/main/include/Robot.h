@@ -14,15 +14,12 @@
 
 using namespace std;
 
-class SwerveModule
-{
-
+class SwerveModule {
 private:
     ctre::phoenix6::hardware::TalonFX *dMotor;
     rev::CANSparkMax *sMotor;
     ctre::phoenix6::hardware::CANcoder *encoder;
     complex<float> turnVector;
-
 public:
     SwerveModule(int moduleID, complex<float> turnVector) {
         dMotor = new ctre::phoenix6::hardware::TalonFX(10+moduleID, "rio");
@@ -30,7 +27,6 @@ public:
         encoder = new ctre::phoenix6::hardware::CANcoder{20+moduleID};
         this->turnVector = turnVector;
     }
-
     void Set(complex<float> driveRate, float turnRate) {
         complex<float> moduleVector = driveRate+turnVector*turnRate;
         float error = arg(moduleVector) - encoder->GetAbsolutePosition().GetValue().value()*M_PI*2;
@@ -53,7 +49,6 @@ class Robot : public frc::TimedRobot {
     SwerveModule{2, complex<float>(1, -1)},
     SwerveModule{3, complex<float>(-1, 1)},
     SwerveModule{4, complex<float>(1, 1)}};
-
   AHRS navx{frc::SPI::Port::kMXP};
 
   void RobotInit() override;
