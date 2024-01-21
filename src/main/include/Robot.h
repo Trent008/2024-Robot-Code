@@ -5,7 +5,7 @@
 #pragma once
 
 #include <frc/TimedRobot.h>
-#include "frc/Joystick.h"
+#include "frc/XboxController.h"
 #include "fmt/core.h"
 #include "Swerve.h"
 
@@ -29,7 +29,7 @@ class Robot : public frc::TimedRobot {
   void SimulationInit() override;
   void SimulationPeriodic() override;
 
-  frc::Joystick xBoxC{0};
+  frc::XboxController xBoxC{0};
   int i = 0;
   Swerve swerve;
 };

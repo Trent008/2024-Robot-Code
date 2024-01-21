@@ -11,15 +11,12 @@ void Robot::RobotInit()
 void Robot::RobotPeriodic() {}
 
 void Robot::AutonomousInit() {}
-void Robot::AutonomousPeriodic()
-{
-  
-}
+void Robot::AutonomousPeriodic(){}
 
 void Robot::TeleopInit() {}
 void Robot::TeleopPeriodic()
 {
-  swerve.Set(complex<float>(float(xBoxC.GetRawAxis(0)), -float(xBoxC.GetRawAxis(1))), -float(xBoxC.GetRawAxis(4)));
+  swerve.Set(Vector{xBoxC.GetLeftX(), -xBoxC.GetLeftY()}.getScaled(0.5), -xBoxC.GetRightX()*0.5);
 }
 
 void Robot::DisabledInit() {}
