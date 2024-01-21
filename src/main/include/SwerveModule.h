@@ -22,8 +22,7 @@ public:
         dMotor = new ctre::phoenix6::hardware::TalonFX(10+moduleID, "rio");
         sMotor = new rev::CANSparkMax{30+moduleID, rev::CANSparkMax::MotorType::kBrushless};
         wheelAngleEncoder = new ctre::phoenix6::hardware::CANcoder{20+moduleID};
-        turnVector = position.getRotatedCCW(90);
-        turnVector.divide(t2D::abs(turnVector));
+        turnVector = position.getRotatedCCW(90).getDivided(turnVector.getMagnitude());
     }
 
     Vector getModuleVector(Vector driveRate, float turnRate)
@@ -36,7 +35,7 @@ public:
         float wheelAngle = wheelAngleEncoder->GetAbsolutePosition().GetValue().value()*360;
         Vector targetVelocity = getModuleVector(driveRate, turnRate);
         float error = angleDifference(targetVelocity.getAngle()*180/M_PI, wheelAngle);
-        float dMotorVelocity = t2D::abs(targetVelocity);
+        float dMotorVelocity = targetVelocity.getMagnitude();
         dMotor->Set(dMotorVelocity);
         sMotor->Set(error / 180);
     }
