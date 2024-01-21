@@ -11,6 +11,15 @@
 
 class Robot : public frc::TimedRobot {
  public:
+  SwerveModule modules[4] =
+  {
+    SwerveModule{1, {-1, -1}},
+    SwerveModule{2, {1, -1}},
+    SwerveModule{3, {-1, 1}},
+    SwerveModule{4, {1, 1}}};
+
+  AHRS navx{frc::SPI::Port::kMXP};
+
   void RobotInit() override;
   void RobotPeriodic() override;
 
