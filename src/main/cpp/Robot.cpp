@@ -2,10 +2,8 @@
 
 void Robot::RobotInit(){}
 void Robot::RobotPeriodic() {}
-
 void Robot::AutonomousInit() {}
 void Robot::AutonomousPeriodic(){}
-
 void Robot::TeleopInit() {}
 void Robot::TeleopPeriodic()
 {
@@ -15,13 +13,10 @@ void Robot::TeleopPeriodic()
       modules[i].Set(driveRate*polar<float>(1, navx.GetYaw()*M_PI/180), turnRate);
   }
 }
-
 void Robot::DisabledInit() {}
 void Robot::DisabledPeriodic() {}
-
 void Robot::TestInit() {}
 void Robot::TestPeriodic() {}
-
 void Robot::SimulationInit() {}
 void Robot::SimulationPeriodic() {}
 
