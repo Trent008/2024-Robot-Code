@@ -25,7 +25,6 @@ public:
         float error = arg(moduleVector) - encoder->GetAbsolutePosition().GetValue().value()*M_PI*2;
         if (error < -M_PI) { error += M_PI*2; }
         if (error > M_PI) { error -= M_PI*2; }
-
         dMotor->Set(abs(moduleVector));
         sMotor->Set(error / M_PI);
     }
