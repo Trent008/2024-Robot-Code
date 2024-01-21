@@ -1,9 +1,7 @@
 // Copyright (c) FIRST and other WPILib contributors.
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
-
 #pragma once
-
 #include <frc/TimedRobot.h>
 #include "frc/XboxController.h"
 #include "fmt/core.h"
@@ -11,9 +9,7 @@
 #include "ctre/phoenix6/CANcoder.hpp"
 #include "ctre/phoenix6/TalonFX.hpp"
 #include "AHRS.h"
-
 using namespace std;
-
 class SwerveModule {
 private:
     ctre::phoenix6::hardware::TalonFX *dMotor;
@@ -37,8 +33,9 @@ public:
         sMotor->Set(error / M_PI);
     }
 };
-
 class Robot : public frc::TimedRobot {
+ private:
+  frc::XboxController xBoxC{0};
  public:
   SwerveModule modules[4] =
   {
@@ -47,25 +44,16 @@ class Robot : public frc::TimedRobot {
     SwerveModule{3, complex<float>(-1, 1)},
     SwerveModule{4, complex<float>(1, 1)}};
   AHRS navx{frc::SPI::Port::kMXP};
-
   void RobotInit() override;
   void RobotPeriodic() override;
-
   void AutonomousInit() override;
   void AutonomousPeriodic() override;
-
   void TeleopInit() override;
   void TeleopPeriodic() override;
-
   void DisabledInit() override;
   void DisabledPeriodic() override;
-
   void TestInit() override;
   void TestPeriodic() override;
-
   void SimulationInit() override;
   void SimulationPeriodic() override;
-
- private:
-  frc::XboxController xBoxC{0};
 };
