@@ -5,10 +5,6 @@
 #include "AHRS.h"
 #include "SwerveModule.h"
 using namespace std;
-void limitAngle(float &angle) {
-    if (angle < -M_PI) { angle += M_PI*2; }
-    if (angle > M_PI) { angle -= M_PI*2; }
-}
 
 class Robot : public frc::TimedRobot {
  private:
