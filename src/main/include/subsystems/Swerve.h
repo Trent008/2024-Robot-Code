@@ -20,7 +20,7 @@ public:
 		SwerveModule(4, complex<float>(1, -1))};
 
 	/**
-	 * Will be called periodically whenever the CommandScheduler runs.
+	 * drives the swerve with an XBox controller
 	 */
 	void Drive();
 
