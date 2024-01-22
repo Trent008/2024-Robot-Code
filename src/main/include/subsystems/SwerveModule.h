@@ -12,10 +12,17 @@ using namespace std;
 class SwerveModule
 {
 public:
+    /**
+     * create a swerve module object for processing an individual
+     * swerve module's response to robot-centric velocity and
+     * rotation commands.
+    */
 	SwerveModule(int ID, complex<float> position);
 
+    // drive the module motors given a robot-centric velocity and rotation command
 	void Set(complex<float> robot_vel, float turn_rate);
 
+    // get the velocity vector of this swerve module given a robot-centric velocity and rotation command
     complex<float> GetVelocity(complex<float> robot_vel, float turn_rate);
 
 
