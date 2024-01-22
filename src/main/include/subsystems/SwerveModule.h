@@ -27,9 +27,6 @@ public:
 
 
 private:
-    // set the motor's velocity PID to a portion of its max velocity
-    void SetMotorRate(float rate);
-
     // motor that drives the wheel
 	ctre::phoenix6::hardware::TalonFX *m_drive;
     // encoder that measures wheel angle
