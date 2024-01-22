@@ -22,11 +22,10 @@ public:
 	/**
 	 * drives the swerve with an XBox controller
 	 */
-	void Drive();
+	void Set(complex<float> field_vel, float turn_rate);
 
 private:
 	// Components (e.g. motor controllers and sensors) should generally be
 	// declared private and exposed only through public methods.
-	frc::XboxController drive_ctrl{0};
 	AHRS gyro{frc::SPI::Port::kMXP};
 };

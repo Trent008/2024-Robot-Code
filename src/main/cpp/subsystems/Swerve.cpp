@@ -6,11 +6,7 @@
 
 Swerve::Swerve() = default;
 
-// This method will be called once per scheduler run
-void Swerve::Drive()
-{
-    complex<float> field_vel = complex<float>(drive_ctrl.GetLeftX(), -drive_ctrl.GetLeftY()) * 0.5f;
-    float turn_rate = -drive_ctrl.GetRightX() * 0.5;
+void Swerve::Set(complex<float> field_vel, float turn_rate) {
     float angle = gyro.GetYaw();
     complex<float> robot_vel = field_vel * polar<float>(1, angle * M_PI / 180);
     float greatest = 1;
@@ -20,8 +16,7 @@ void Swerve::Drive()
             greatest = module_speed;
         }
     }
-    for (int i = 0; i < 4; i++)
-    {
+    for (int i = 0; i < 4; i++) {
         modules[i].Set(robot_vel / greatest, turn_rate);
     }
 }

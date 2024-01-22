@@ -36,8 +36,6 @@ private:
     ctre::phoenix6::hardware::CANcoder *e_twist;
     // motor that drives wheel angle
     rev::CANSparkMax *m_twist;
-    // velocity controller for the drive motor
-    ctre::phoenix6::controls::VelocityTorqueCurrentFOC m_drive_PID{0_tps};
     // vector to make this module turn the robot about it's center
     complex<float> turn_vector;
 };
