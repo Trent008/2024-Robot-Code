@@ -5,7 +5,11 @@
 #pragma once
 #include "math.h"
 
-// limit the given angle to -pi to pi radians
-void wrap(float &angle) {
-    angle = fmod(angle + M_PI, 2.0f * M_PI) - M_PI;
+
+namespace angleMath {
+    // limit the given angle to -pi to pi radians
+    void wrap(float &angle) {
+        angle = fmod(angle + M_PI, 2.0f * M_PI) - M_PI;
+    }
 }
+
