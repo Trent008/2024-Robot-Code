@@ -1,4 +1,50 @@
 See file:///C:/Users/trent/Desktop/Code/Robot/2024-Robot-Code/build/tmp/compileFrcUserProgramReleaseExecutableFrcUserProgramCpp/output.txt for all output for compileFrcUserProgramReleaseExecutableFrcUserProgramCpp.
-compiling Robot.cpp successful.
+compiling SwerveModule.cpp failed.
+In file included from C:\Users\trent\Desktop\Code\Robot\2024-Robot-Code\src\main\cpp\SwerveModule.cpp:5:
+C:\Users\trent\Desktop\Code\Robot\2024-Robot-Code\src\main\include/SwerveModule.h:14:36: error: 'complex' has not been declared
+   14 |         SwerveModule(int moduleID, complex<float> turnVector);
+      |                                    ^~~~~~~
+C:\Users\trent\Desktop\Code\Robot\2024-Robot-Code\src\main\include/SwerveModule.h:14:43: error: expected ',' or '...' before '<' token
+   14 |         SwerveModule(int moduleID, complex<float> turnVector);
+      |                                           ^
+C:\Users\trent\Desktop\Code\Robot\2024-Robot-Code\src\main\include/SwerveModule.h:16:18: error: 'complex' has not been declared
+   16 |         void Set(complex<float> driveRate, float turnRate);
+      |                  ^~~~~~~
+C:\Users\trent\Desktop\Code\Robot\2024-Robot-Code\src\main\include/SwerveModule.h:16:25: error: expected ',' or '...' before '<' token
+   16 |         void Set(complex<float> driveRate, float turnRate);
+      |                         ^
+C:\Users\trent\Desktop\Code\Robot\2024-Robot-Code\src\main\include/SwerveModule.h:24:5: error: 'complex' does not name a type
+   24 |     complex<float> turnVector;
+      |     ^~~~~~~
+C:\Users\trent\Desktop\Code\Robot\2024-Robot-Code\src\main\cpp\SwerveModule.cpp:8:42: error: 'complex' has not been declared
+    8 | SwerveModule::SwerveModule(int moduleID, complex<float> turnVector) {
+      |                                          ^~~~~~~
+C:\Users\trent\Desktop\Code\Robot\2024-Robot-Code\src\main\cpp\SwerveModule.cpp:8:49: error: expected ',' or '...' before '<' token
+    8 | SwerveModule::SwerveModule(int moduleID, complex<float> turnVector) {
+      |                                                 ^
+C:\Users\trent\Desktop\Code\Robot\2024-Robot-Code\src\main\cpp\SwerveModule.cpp: In constructor 'SwerveModule::SwerveModule(int, int)':
+C:\Users\trent\Desktop\Code\Robot\2024-Robot-Code\src\main\cpp\SwerveModule.cpp:12:11: error: 'class SwerveModule' has no member named 'turnVector'
+   12 |     this->turnVector = turnVector;
+      |           ^~~~~~~~~~
+C:\Users\trent\Desktop\Code\Robot\2024-Robot-Code\src\main\cpp\SwerveModule.cpp:12:24: error: 'turnVector' was not declared in this scope
+   12 |     this->turnVector = turnVector;
+      |                        ^~~~~~~~~~
+C:\Users\trent\Desktop\Code\Robot\2024-Robot-Code\src\main\cpp\SwerveModule.cpp: At global scope:
+C:\Users\trent\Desktop\Code\Robot\2024-Robot-Code\src\main\cpp\SwerveModule.cpp:15:6: error: variable or field 'Set' declared void
+   15 | void SwerveModule::Set(complex<float> driveRate, float turnRate) {
+      |      ^~~~~~~~~~~~
+C:\Users\trent\Desktop\Code\Robot\2024-Robot-Code\src\main\cpp\SwerveModule.cpp:15:24: error: 'complex' was not declared in this scope
+   15 | void SwerveModule::Set(complex<float> driveRate, float turnRate) {
+      |                        ^~~~~~~
+C:\Users\trent\Desktop\Code\Robot\2024-Robot-Code\src\main\cpp\SwerveModule.cpp:6:1: note: 'std::complex' is defined in header '<complex>'; did you forget to '#include <complex>'?
+    5 | #include "SwerveModule.h"
+  +++ |+#include <complex>
+    6 | using namespace std;
+C:\Users\trent\Desktop\Code\Robot\2024-Robot-Code\src\main\cpp\SwerveModule.cpp:15:32: error: expected primary-expression before 'float'
+   15 | void SwerveModule::Set(complex<float> driveRate, float turnRate) {
+      |                                ^~~~~
+C:\Users\trent\Desktop\Code\Robot\2024-Robot-Code\src\main\cpp\SwerveModule.cpp:15:50: error: expected primary-expression before 'float'
+   15 | void SwerveModule::Set(complex<float> driveRate, float turnRate) {
+      |                                                  ^~~~~
 
 Finished compileFrcUserProgramReleaseExecutableFrcUserProgramCpp, see full log file:///C:/Users/trent/Desktop/Code/Robot/2024-Robot-Code/build/tmp/compileFrcUserProgramReleaseExecutableFrcUserProgramCpp/output.txt.
