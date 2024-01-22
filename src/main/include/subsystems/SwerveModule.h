@@ -12,11 +12,11 @@ using namespace std;
 class SwerveModule
 {
 public:
-	SwerveModule(int ID, complex<float> turn_vector);
+	SwerveModule(int ID, complex<float> position);
 
-	void Set(complex<float> robot_velocity, float turn_rate);
+	void Set(complex<float> robot_vel, float turn_rate);
 
-    complex<float> GetVelocity(complex<float> robot_velocity, float turn_rate);
+    complex<float> GetVelocity(complex<float> robot_vel, float turn_rate);
 
 
 private:

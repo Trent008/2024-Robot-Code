@@ -4,12 +4,11 @@
 
 #pragma once
 
-#include <frc2/command/SubsystemBase.h>
 #include "subsystems/SwerveModule.h"
 #include "AHRS.h"
 #include "frc/XboxController.h"
 
-class Swerve : public frc2::SubsystemBase
+class Swerve
 {
 public:
 	Swerve();
