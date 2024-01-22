@@ -1,21 +1,13 @@
 #pragma once
 #include <frc/TimedRobot.h>
-#include "frc/XboxController.h"
 #include "fmt/core.h"
-#include "AHRS.h"
-#include "SwerveModule.h"
+#include "subsystems/Swerve.h"
 using namespace std;
 
 class Robot : public frc::TimedRobot {
  private:
-  frc::XboxController xBoxC{0};
+  Swerve swerve;
  public:
-  SwerveModule modules[4] ={
-    SwerveModule(1, complex<float>(-1, -1)),
-    SwerveModule(2, complex<float>(1, -1)),
-    SwerveModule(3, complex<float>(-1, 1)),
-    SwerveModule(4, complex<float>(1, 1))};
-  AHRS navx{frc::SPI::Port::kMXP};
   void RobotInit() override;
   void RobotPeriodic() override;
   void AutonomousInit() override;

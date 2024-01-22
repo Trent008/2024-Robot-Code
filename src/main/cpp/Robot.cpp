@@ -5,11 +5,7 @@ void Robot::AutonomousInit() {}
 void Robot::AutonomousPeriodic() {}
 void Robot::TeleopInit() {}
 void Robot::TeleopPeriodic() {
-  complex<float> driveRate = complex<float>(xBoxC.GetLeftX(), -xBoxC.GetLeftY())*0.5f;
-  float turnRate = -xBoxC.GetRightX()*0.5;
-  for (int i = 0; i < 4; i++) {
-      modules[i].Set(driveRate*polar<float>(1, navx.GetYaw()*M_PI/180), turnRate);
-  }
+  swerve.Drive();
 }
 void Robot::DisabledInit() {}
 void Robot::DisabledPeriodic() {}
