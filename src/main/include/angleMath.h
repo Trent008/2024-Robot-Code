@@ -4,7 +4,9 @@
 
 #pragma once
 #include "math.h"
+#include "complex"
 
+using namespace std;
 
 namespace angleMath {
     // limit the given angle to -pi to pi radians
