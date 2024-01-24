@@ -23,9 +23,8 @@ void SwerveModule::Set(complex<float> robot_vel, float turn_rate) {
             error += M_PI;
             aM::wrap(error);
             m_drive_rate = -m_drive_rate;
-        } else {
-            m_drive->Set(m_drive_rate);
         }
+        m_drive->Set(m_drive_rate);
         m_twist->Set(error / M_PI);
     } else {
         m_drive->Set(0);
