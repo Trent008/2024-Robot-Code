@@ -7,9 +7,6 @@ using namespace std;
 
 class Robot : public frc::TimedRobot
 {
-private:
-	Swerve swerve;
-
 public:
 	void RobotInit() override;
 	void RobotPeriodic() override;
@@ -23,5 +20,6 @@ public:
 	void TestPeriodic() override;
 	void SimulationInit() override;
 	void SimulationPeriodic() override;
+	Swerve swerve;
 	frc::Joystick xBoxC{0};
 };
