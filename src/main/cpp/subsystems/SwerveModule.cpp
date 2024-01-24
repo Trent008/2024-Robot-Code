@@ -16,7 +16,7 @@ SwerveModule::SwerveModule(int ID, complex<float> position) {
 void SwerveModule::Set(complex<float> robot_vel, float turn_rate) {
     complex<float> velocity = GetVelocity(robot_vel, turn_rate);
     float m_drive_rate = abs(velocity);
-    if (m_drive_rate < 0.001) {
+    if (m_drive_rate > 0.001) {
         float error = arg(velocity) - e_twist->GetAbsolutePosition().GetValueAsDouble();
         aM::wrap(error);
         if (abs(error) > M_PI/2) {
