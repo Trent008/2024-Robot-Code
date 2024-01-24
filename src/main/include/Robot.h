@@ -2,13 +2,13 @@
 #include <frc/TimedRobot.h>
 #include "fmt/core.h"
 #include "subsystems/Swerve.h"
+#include "frc/XboxController.h"
 using namespace std;
 
 class Robot : public frc::TimedRobot
 {
 private:
 	Swerve swerve;
-	frc::XboxController xBoxC{0};
 
 public:
 	void RobotInit() override;
@@ -23,4 +23,5 @@ public:
 	void TestPeriodic() override;
 	void SimulationInit() override;
 	void SimulationPeriodic() override;
+	frc::XboxController xBoxC{0};
 };

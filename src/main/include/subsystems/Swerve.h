@@ -6,8 +6,6 @@
 
 #include "subsystems/SwerveModule.h"
 #include "AHRS.h"
-#include "frc/XboxController.h"
-
 class Swerve
 {
 public:
