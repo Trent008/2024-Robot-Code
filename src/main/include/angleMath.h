@@ -12,7 +12,12 @@ using namespace std;
 namespace aM {
     // limit the given angle to -pi to pi radians
     void wrap(float &angle) {
-        angle = fmod(angle + M_PI, 2.0f * M_PI) - M_PI;
+        while(angle > M_PI) {
+            angle -= 2*M_PI;
+        }
+        while(angle < -M_PI) {
+            angle += 2*M_PI;
+        }
     }
 }
 
