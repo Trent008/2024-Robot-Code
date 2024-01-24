@@ -2,7 +2,7 @@
 #include <frc/TimedRobot.h>
 #include "fmt/core.h"
 #include "subsystems/Swerve.h"
-#include "frc/XboxController.h"
+#include "frc/Joystick.h"
 using namespace std;
 
 class Robot : public frc::TimedRobot
@@ -23,5 +23,5 @@ public:
 	void TestPeriodic() override;
 	void SimulationInit() override;
 	void SimulationPeriodic() override;
-	frc::XboxController xBoxC{0};
+	frc::Joystick xBoxC{0};
 };
