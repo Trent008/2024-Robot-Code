@@ -12,10 +12,10 @@ public:
 	Swerve();
 
 	SwerveModule modules[4] = {
-		SwerveModule(1, complex<float>(-1, 1)),
-		SwerveModule(2, complex<float>(-1, -1)),
-		SwerveModule(3, complex<float>(1, 1)),
-		SwerveModule(4, complex<float>(1, -1))};
+		SwerveModule(1, complex<float>(-17.75, 25)),
+		SwerveModule(2, complex<float>(-17.75, -25)),
+		SwerveModule(3, complex<float>(17.75, 25)),
+		SwerveModule(4, complex<float>(17.75, -25))};
 
 	/**
 	 * drives the swerve with an XBox controller
