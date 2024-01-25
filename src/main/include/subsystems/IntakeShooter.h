@@ -9,11 +9,10 @@ class IntakeShooter
 {
 public:
 	IntakeShooter();
+	bool SetAngle(float angle, float maxRPM, float tolerance);
+	void SetIntakeSpeed();
+	void SetShooterSpeed();
 	void Initialize();
-	void SetIntake();
-	void SetAngle();
-	void SetShooter();
-	bool GetSensor();
 	
 private:
 	rev::CANSparkMax m_intake{41, rev::CANSparkMax::MotorType::kBrushless};

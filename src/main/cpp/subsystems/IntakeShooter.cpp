@@ -6,7 +6,11 @@
 
 IntakeShooter::IntakeShooter() = default;
 
-
+bool IntakeShooter::SetAngle(float angle, float maxRPM = 1000, float tolerance = 3) {
+    anglePID.SetSmartMotionMaxVelocity(maxRPM);
+    anglePID.SetReference(angle, rev::CANSparkMax::ControlType::kSmartMotion);
+    return abs(angle - e_angle.GetPosition()) < tolerance;
+}
 
 void IntakeShooter::Initialize() {
     m_intake.RestoreFactoryDefaults();
