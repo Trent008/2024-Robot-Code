@@ -11,11 +11,6 @@ class Swerve
 public:
 	Swerve();
 
-	SwerveModule modules[4] = {
-		SwerveModule(1, complex<float>(-17.75, 25)),
-		SwerveModule(2, complex<float>(-17.75, -25)),
-		SwerveModule(3, complex<float>(17.75, 25)),
-		SwerveModule(4, complex<float>(17.75, -25))};
 
 	/**
 	 * drives the swerve with an XBox controller
@@ -23,7 +18,11 @@ public:
 	void Set(complex<float> field_vel, float turn_rate);
 
 private:
-	// Components (e.g. motor controllers and sensors) should generally be
-	// declared private and exposed only through public methods.
+	SwerveModule modules[4] = {
+		SwerveModule(1, complex<float>(-17.75, 25)),
+		SwerveModule(2, complex<float>(-17.75, -25)),
+		SwerveModule(3, complex<float>(17.75, 25)),
+		SwerveModule(4, complex<float>(17.75, -25))};
+	
 	AHRS gyro{frc::SPI::Port::kMXP};
 };

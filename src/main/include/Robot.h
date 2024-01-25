@@ -20,6 +20,7 @@ public:
 	void TestPeriodic() override;
 	void SimulationInit() override;
 	void SimulationPeriodic() override;
+private:
 	Swerve swerve;
 	frc::Joystick xBoxC{0};
 };
