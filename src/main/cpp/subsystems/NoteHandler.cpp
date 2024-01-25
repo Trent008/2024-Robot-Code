@@ -21,15 +21,8 @@ bool NoteHandler::SetAngle(float angle, float maxRPM = 1000, float tolerance = 3
 }
 
 // set how quickly to move the note through the rollers
-bool NoteHandler::SetRollerSpeed(float InPerMin) {
+void NoteHandler::SetRollerSpeed(float InPerMin) {
     rollersPID.SetReference(InPerMin, rev::CANSparkMax::ControlType::kVelocity, 1);
-    return true; // todo: return the note sensor value
-}
-
-// set the position of the rollers relative to they're current position (only use once)
-void NoteHandler::SetRollerPosition(float position) {
-    e_rollers.SetPosition(0);
-    rollersPID.SetReference(position, rev::CANSparkMax::ControlType::kPosition);
 }
 
 void NoteHandler::Initialize() {
@@ -55,15 +48,11 @@ void NoteHandler::Initialize() {
 
     m_rollers.RestoreFactoryDefaults();
     m_rollers.SetInverted(false);
-    rollersPID.SetP(0.2);
-    rollersPID.SetI(0);
-    rollersPID.SetD(1);
-    rollersPID.SetFF(0);
-    // second PID slot for velocity control
-    rollersPID.SetP(6e-5, 1);
-    rollersPID.SetI(1e-6, 1);
-    rollersPID.SetD(0, 1);
-    rollersPID.SetFF(0.000015, 1);
+    // PID for velocity control
+    rollersPID.SetP(6e-5);
+    rollersPID.SetI(1e-6);
+    rollersPID.SetD(0);
+    rollersPID.SetFF(0.000015);
     e_rollers.SetPositionConversionFactor(rollerIPR);
     m_rollers.BurnFlash();
 }
