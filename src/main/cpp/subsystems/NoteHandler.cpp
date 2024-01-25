@@ -9,26 +9,27 @@ NoteHandler::NoteHandler() = default;
 // set the elevator height (0 to 20 inches)
 bool NoteHandler::SetHeight(float height, float maxRPM = 1000, float tolerance = 1) {
     elevatorPID.SetSmartMotionMaxVelocity(maxRPM);
-    elevatorPID.SetReference(height, rev::ControlType::kSmartMotion);
+    elevatorPID.SetReference(height, rev::CANSparkMax::ControlType::kSmartMotion);
     return abs(height - e_elevator.GetPosition()) < tolerance;
 }
 
 // set the angle in degrees of the note handler arm
 bool NoteHandler::SetAngle(float angle, float maxRPM = 1000, float tolerance = 3) {
     anglePID.SetSmartMotionMaxVelocity(maxRPM);
-    anglePID.SetReference(angle, rev::ControlType::kSmartMotion);
+    anglePID.SetReference(angle, rev::CANSparkMax::ControlType::kSmartMotion);
     return abs(angle - e_angle.GetPosition()) < tolerance;
 }
 
-bool NoteHandler::SetRollerSpeed(float speed) {
-    m_rollers.Set(speed);
+// set how quickly to move the note through the rollers
+bool NoteHandler::SetRollerSpeed(float InPerMin) {
+    rollersPID.SetReference(InPerMin, rev::CANSparkMax::ControlType::kVelocity, 1);
     return true; // todo: return the note sensor value
 }
 
 // set the position of the rollers relative to they're current position (only use once)
 void NoteHandler::SetRollerPosition(float position) {
     e_rollers.SetPosition(0);
-    rollersPID.SetReference(position, rev::ControlType::kPosition);
+    rollersPID.SetReference(position, rev::CANSparkMax::ControlType::kPosition);
 }
 
 void NoteHandler::Initialize() {
@@ -38,7 +39,6 @@ void NoteHandler::Initialize() {
     elevatorPID.SetI(0);
     elevatorPID.SetD(1);
     elevatorPID.SetFF(0);
-    elevatorPID.SetSmartMotionAccelStrategy(rev::SparkMaxPIDController::AccelStrategy::kTrapezoidal);
     elevatorPID.SetSmartMotionMaxAccel(2000);
     e_elevator.SetPositionConversionFactor(elevatorIPR);
     m_elevator.BurnFlash();
@@ -49,7 +49,6 @@ void NoteHandler::Initialize() {
     anglePID.SetI(0);
     anglePID.SetD(1);
     anglePID.SetFF(0);
-    anglePID.SetSmartMotionAccelStrategy(rev::SparkMaxPIDController::AccelStrategy::kTrapezoidal);
     anglePID.SetSmartMotionMaxAccel(2000);
     e_angle.SetPositionConversionFactor(angleDPR);
     m_angle.BurnFlash();
@@ -60,6 +59,11 @@ void NoteHandler::Initialize() {
     rollersPID.SetI(0);
     rollersPID.SetD(1);
     rollersPID.SetFF(0);
+    // second PID slot for velocity control
+    rollersPID.SetP(6e-5, 1);
+    rollersPID.SetI(1e-6, 1);
+    rollersPID.SetD(0, 1);
+    rollersPID.SetFF(0.000015, 1);
     e_rollers.SetPositionConversionFactor(rollerIPR);
     m_rollers.BurnFlash();
 }

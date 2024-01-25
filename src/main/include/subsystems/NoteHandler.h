@@ -11,8 +11,8 @@ public:
 	NoteHandler();
 
 	void Initialize();
-	bool SetHeight(float height, float maxRPM = 1000, float tolerance = 1);
-	bool SetAngle(float angle, float maxRPM = 1000, float tolerance = 3);
+	bool SetHeight(float height, float maxRPM, float tolerance);
+	bool SetAngle(float angle, float maxRPM, float tolerance);
 	bool SetRollerSpeed(float speed);
 	void SetRollerPosition(float position);
 
