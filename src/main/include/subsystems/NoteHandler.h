@@ -13,7 +13,7 @@ public:
 	void Initialize();
 	bool SetHeight(float height, float maxRPM, float tolerance);
 	bool SetAngle(float angle, float maxRPM, float tolerance);
-	void SetRollerSpeed(float speed);
+	void SetRollerSpeed(float inPerMin);
 
 
 private:

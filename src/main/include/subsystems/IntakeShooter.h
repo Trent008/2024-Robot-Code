@@ -10,8 +10,9 @@ class IntakeShooter
 public:
 	IntakeShooter();
 	bool SetAngle(float angle, float maxRPM, float tolerance);
-	void SetIntakeSpeed();
-	void SetShooterSpeed();
+	bool SetIntakeSpeed(float inPerMin);
+	void SetShooterSpeed(float inPerMin);
+	void SetShooter(float speed);
 	void Initialize();
 	
 private:

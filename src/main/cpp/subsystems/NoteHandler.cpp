@@ -21,8 +21,8 @@ bool NoteHandler::SetAngle(float angle, float maxRPM = 1000, float tolerance = 3
 }
 
 // set how quickly to move the note through the rollers
-void NoteHandler::SetRollerSpeed(float InPerMin) {
-    rollersPID.SetReference(InPerMin, rev::CANSparkMax::ControlType::kVelocity, 1);
+void NoteHandler::SetRollerSpeed(float inPerMin) {
+    rollersPID.SetReference(inPerMin, rev::CANSparkMax::ControlType::kVelocity);
 }
 
 void NoteHandler::Initialize() {

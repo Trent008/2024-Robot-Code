@@ -12,6 +12,11 @@ bool IntakeShooter::SetAngle(float angle, float maxRPM = 1000, float tolerance =
     return abs(angle - e_angle.GetPosition()) < tolerance;
 }
 
+bool IntakeShooter::SetIntakeSpeed(float inPerMin) {
+    intakePID.SetReference(inPerMin, rev::CANSparkMax::ControlType::kVelocity);
+    return true; // todo: return value of note sensor
+}
+
 void IntakeShooter::Initialize() {
     m_intake.RestoreFactoryDefaults();
     m_intake.SetInverted(false);
