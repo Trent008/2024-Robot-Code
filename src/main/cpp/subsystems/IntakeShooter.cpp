@@ -6,6 +6,7 @@
 
 IntakeShooter::IntakeShooter() = default;
 
+// 0 is fully retracted and 
 bool IntakeShooter::SetAngle(float angle, float maxRPM = 1000, float tolerance = 3) {
     anglePID.SetSmartMotionMaxVelocity(maxRPM);
     anglePID.SetReference(angle, rev::CANSparkMax::ControlType::kSmartMotion);
@@ -15,6 +16,16 @@ bool IntakeShooter::SetAngle(float angle, float maxRPM = 1000, float tolerance =
 bool IntakeShooter::SetIntakeSpeed(float inPerMin) {
     intakePID.SetReference(inPerMin, rev::CANSparkMax::ControlType::kVelocity);
     return true; // todo: return value of note sensor
+}
+
+void IntakeShooter::SetShooterSpeed(float inPerMin) {
+    shooterPID1.SetReference(inPerMin, rev::CANSparkMax::ControlType::kVelocity);
+    shooterPID2.SetReference(inPerMin, rev::CANSparkMax::ControlType::kVelocity);
+}
+
+void IntakeShooter::SetShooter(float speed) {
+    m1_shooter.Set(speed);
+    m2_shooter.Set(speed);
 }
 
 void IntakeShooter::Initialize() {
