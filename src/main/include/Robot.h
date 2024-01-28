@@ -1,8 +1,8 @@
 #pragma once
 #include <frc/TimedRobot.h>
 #include "fmt/core.h"
-#include "subsystems/Swerve.h"
-#include "frc/Joystick.h"
+#include "subsystems/S.h"
+#include "frc/XboxController.h"
 using namespace std;
 
 class Robot : public frc::TimedRobot
@@ -21,6 +21,6 @@ public:
 	void SimulationInit() override;
 	void SimulationPeriodic() override;
 private:
-	Swerve swerve;
-	frc::Joystick xBoxC{0};
+	S s;
+	frc::XboxController xc{0};
 };

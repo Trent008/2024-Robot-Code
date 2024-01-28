@@ -8,16 +8,14 @@
 
 using namespace std;
 
-// angle math
-namespace aM {
-    // limit the given angle to -pi to pi radians
-    void wrap(float &angle) {
-        while(angle > M_PI) {
-            angle -= 2*M_PI;
-        }
-        while(angle < -M_PI) {
-            angle += 2*M_PI;
-        }
+
+// limit the given angle to -pi to pi radians
+void wrap(float &angle) {
+    while(angle > M_PI) {
+        angle -= 2*M_PI;
+    }
+    while(angle < -M_PI) {
+        angle += 2*M_PI;
     }
 }
 

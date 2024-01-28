@@ -5,7 +5,7 @@ void Robot::AutonomousInit() {}
 void Robot::AutonomousPeriodic() {}
 void Robot::TeleopInit() {}
 void Robot::TeleopPeriodic() {
-  swerve.Set(complex<float>(xBoxC.GetRawAxis(0), -xBoxC.GetRawAxis(1)), -xBoxC.GetRawAxis(4));
+  s.set(complex<float>(xc.GetLeftX(), -xc.GetLeftY()), -xc.GetRightX());
 }
 void Robot::DisabledInit() {}
 void Robot::DisabledPeriodic() {}
