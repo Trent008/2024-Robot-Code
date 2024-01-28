@@ -1,7 +1,7 @@
 #pragma once
 #include <frc/TimedRobot.h>
 #include "fmt/core.h"
-#include "subsystems/S.h"
+#include "subsystems/Swerve.h"
 #include "frc/XboxController.h"
 using namespace std;
 
@@ -21,6 +21,6 @@ public:
 	void SimulationInit() override;
 	void SimulationPeriodic() override;
 private:
-	S s;
+	Swerve swerve;
 	frc::XboxController xc{0};
 };
