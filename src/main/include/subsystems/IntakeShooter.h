@@ -14,9 +14,8 @@ public:
 		anglePID.SetReference(angle, rev::CANSparkMax::ControlType::kSmartMotion);
 		return abs(angle - e_angle.GetPosition()) < tolerance;
 	}
-	bool SetIntakeSpeed(float inPerMin) {
+	void SetIntakeSpeed(float inPerMin) {
 		intakePID.SetReference(inPerMin, rev::CANSparkMax::ControlType::kVelocity);
-		return true; // todo: return value of note sensor
 	}
 	void SetShooterSpeed(float inPerMin) {
 		shooterPID1.SetReference(inPerMin, rev::CANSparkMax::ControlType::kVelocity);
@@ -25,6 +24,9 @@ public:
 	void SetShooter(float speed) {
 		m1_shooter.Set(speed);
 		m2_shooter.Set(speed);
+	}
+	bool GetNoteSensor() {
+		return true; // todo: get sensor value
 	}
 	void Initialize() {
 		m_intake.RestoreFactoryDefaults();
