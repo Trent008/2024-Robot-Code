@@ -8,7 +8,6 @@
 class IntakeShooter
 {
 public:
-	IntakeShooter();
 	bool SetAngle(float angle, float maxRPM, float tolerance) {
 		anglePID.SetSmartMotionMaxVelocity(maxRPM);
 		anglePID.SetReference(angle, rev::CANSparkMax::ControlType::kSmartMotion);

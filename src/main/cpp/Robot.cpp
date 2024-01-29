@@ -5,6 +5,12 @@ void Robot::AutonomousInit() {}
 void Robot::AutonomousPeriodic() {}
 void Robot::TeleopInit() {}
 void Robot::TeleopPeriodic() {
+  if (!isShooting) {
+    if (xc.GetAButtonPressed()) {
+      isIntaking = !isIntaking;
+    }
+  }
+
   swerve.set(complex<float>(xc.GetLeftX(), -xc.GetLeftY()), -xc.GetRightX());
 }
 void Robot::DisabledInit() {}

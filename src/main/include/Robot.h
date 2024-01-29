@@ -24,15 +24,9 @@ public:
 	void SimulationPeriodic() override;
 private:
 	frc::Timer shooterTimer;
-	// 0: stowed
-	// 10: intaking
-	// 20: shooter aiming
-	// 21: shooting
-	// 30: transferring
-	// 40: climb step1
-	// 41: climb step2
-	// 42: climb step3
-	int robotState = 0;
+	bool isShooting = 0;
+	bool isAiming = 0;
+	bool isIntaking = 0;
 	Swerve swerve;
 	IntakeShooter intakeShooter;
 	NoteHandler noteHandler;
