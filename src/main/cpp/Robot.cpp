@@ -9,6 +9,10 @@ void Robot::TeleopPeriodic() {
     if (xc.GetAButtonPressed()) {
       isIntaking = !isIntaking;
     }
+    else if (xc.GetBButton()) {
+      isIntaking = false;
+      isAiming = true;
+    }
   }
 
   swerve.set(complex<float>(xc.GetLeftX(), -xc.GetLeftY()), -xc.GetRightX());
